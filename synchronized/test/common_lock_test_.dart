@@ -24,7 +24,7 @@ void lockMain(LockFactory lockFactory) {
       var lock1 = newLock();
       var lock2 = newLock();
 
-      bool ok;
+      var ok = false;
       await lock1.synchronized(() async {
         await lock2.synchronized(() async {
           expect(lock2.locked, isTrue);
@@ -284,7 +284,7 @@ void lockMain(LockFactory lockFactory) {
     group('immediacity', () {
       test('sync', () async {
         var lock = newLock();
-        int value;
+        var value = 0;
         final future = lock.synchronized(() {
           value = 1;
           return Future.value().then((_) {
@@ -299,7 +299,7 @@ void lockMain(LockFactory lockFactory) {
 
       test('async', () async {
         var lock = newLock();
-        int value;
+        var value = 0;
         final future = lock.synchronized(() async {
           value = 1;
           return Future.value().then((_) {

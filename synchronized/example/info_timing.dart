@@ -1,6 +1,6 @@
 import 'dart:async';
 
-bool _isDart2AsyncTiming;
+bool? _isDart2AsyncTiming;
 Future<bool> isDart2AsyncTiming() async {
   if (_isDart2AsyncTiming == null) {
     // Create an async function
@@ -15,7 +15,7 @@ Future<bool> isDart2AsyncTiming() async {
     method();
     _isDart2AsyncTiming ??= false;
   }
-  return _isDart2AsyncTiming;
+  return _isDart2AsyncTiming!;
 }
 
 Future main() async {
